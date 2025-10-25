@@ -1,0 +1,22 @@
+---
+const { title = "Init Source Ltd", description = "IT & Software Recruitment" } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/hero-illustration.svg" />
+  </head>
+  <body class="bg-white text-text font-sans antialiased">
+    <slot />
+  </body>
+</html>

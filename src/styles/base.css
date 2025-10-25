@@ -1,0 +1,36 @@
+@font-face{
+  font-family:"Inter";
+  src: url("https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHu.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400 800;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fluid type like Google Labs */
+:root{
+  --h1: clamp(40px, 6vw, 80px);
+  --h2: clamp(28px, 3vw, 44px);
+  --lead: clamp(18px, 2vw, 22px);
+}
+.h1{ font-size:var(--h1); line-height:1.05; letter-spacing:-0.02em; }
+.h2{ font-size:var(--h2); line-height:1.15; letter-spacing:-0.01em; }
+.lead{ font-size:var(--lead); color:#4B5563; }
+.section{ padding-block: clamp(56px, 10vw, 120px); }
+.maxw{ max-width: 92rem; } /* ~1472px */
+
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.8s ease-out forwards;
+}

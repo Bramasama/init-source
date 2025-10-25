@@ -1,0 +1,348 @@
+---
+import Base from "../layouts/Base.astro";
+import "../styles/base.css";
+import Header from "../components/Header.astro";
+const year = new Date().getFullYear();
+---
+<Base title="Init Source — Top Tech Talent" description="Specialist recruitment for engineering, data, and product.">
+  <Header />
+
+  <!-- HERO -->
+  <section class="section bg-neutral-light">
+    <div class="container maxw grid gap-16 md:grid-cols-2 items-center">
+      <div>
+        <h1 class="h1 font-extrabold text-text">Hire proven <span class="text-primary">software talent</span> fast</h1>
+        <p class="lead mt-5">Specialist recruitment for engineering, data, and product teams.</p>
+        <p class="mt-4 text-lg text-gray-600 max-w-2xl">
+  We help ambitious tech companies hire top engineers and developers faster — with precision, transparency, and care.
+</p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#contact" class="inline-flex items-center rounded-full bg-primary px-7 py-4 text-white text-lg font-semibold hover:bg-accent">Get Started</a>
+          <a href="#services" class="inline-flex items-center rounded-full border border-neutral bg-white px-7 py-4 text-lg font-medium hover:bg-neutral-light">Our Services</a>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">Driven by Tech | Powered by People</p>
+      </div>
+    <div class="p- bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out border border-gray-100">
+  <div class="overflow-hidden rounded-xl">
+    <img 
+      src="/hero-illustration.svg" 
+      alt="Hiring dashboard" 
+      class="rounded-2xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-8 shadow-lg md:scale-105 opacity-80 hover:opacity-100 transition-opacity duration-300"
+    />
+  </div>
+</div>
+  </section>
+
+<!-- ABOUT -->
+<section id="about" class="section bg-[#F9FAFB]">
+  <div class="container maxw grid md:grid-cols-2 items-center gap-12">
+    <div>
+      <h2 class="h2 font-bold text-text">
+        About <span class="text-primary">InitSource</span>
+      </h2>
+
+      <p class="mt-4 text-gray-600 text-lg leading-snug">
+        InitSource is a modern tech recruitment agency built for the next generation of hiring.
+        We connect talented engineers, developers, and data professionals with innovative companies
+        through a transparent, human-first approach.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 mt-10 text-center md:text-left gap-8">
+        <div>
+          <p class="text-xl font-semibold text-primary">Precision Matching</p>
+          <p class="text-sm text-gray-600">Every candidate aligned to your tech stack and goals.</p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-primary">Human Expertise</p>
+          <p class="text-sm text-gray-600">Experienced recruiters who understand software and people.</p>
+        </div>
+        <div>
+          <p class="text-xl font-semibold text-primary">Transparent Process</p>
+          <p class="text-sm text-gray-600">Clarity from first call to final hire — no surprises.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 flex gap-4">
+        <a
+          href="#contact"
+          class="rounded-full bg-primary text-white px-6 py-3 font-semibold hover:bg-accent transition"
+        >
+          Get Started
+        </a>
+        <a
+          href="#process"
+          class="rounded-full border border-primary text-primary px-6 py-3 font-semibold hover:bg-primary hover:text-white transition"
+        >
+          Our Process
+        </a>
+        </div>
+      </div>
+
+      <!-- Visual Column -->
+      <div class="rounded-2xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-8 shadow-lg md:scale-105 opacity-80 hover:opacity-100 transition-opacity duration-300">
+        <img src="/About-section.svg" alt="Recruitment workflow" class="w-full rounded-xl" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <!-- SERVICES -->
+<section id="services" class="bg-[#F7F9FC] py-20">
+  <div class="container maxw">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-[#111827]">
+      Our <span class="text-[#007BFF]">Services</span>
+    </h2>
+    <p class="mt-3 text-lg text-[#6B7280] max-w-2xl">
+      Build your team with speed, precision, and long-term fit.
+    </p>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      <!-- Card 1 -->
+      <article class="group h-full rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-lg">
+        <div class="flex h-full flex-col">
+          <div class="mb-6 inline-grid place-items-center size-12 rounded-xl bg-blue-50 text-[#007BFF]">
+            <span class="text-xl">💼</span>
+          </div>
+          <h3 class="text-2xl font-semibold text-[#111827]">Permanent Recruitment</h3>
+          <p class="mt-3 text-[#6B7280] leading-snug">
+            Hire engineers, data, and product specialists who fit both your stack and your culture.
+We combine technical screening with human insight to reduce hiring risk.
+          </p>
+        
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="group h-full rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-lg">
+        <div class="flex h-full flex-col">
+          <div class="mb-6 inline-grid place-items-center size-12 rounded-xl bg-blue-50 text-[#007BFF]">
+            <span class="text-xl">⚙️</span>
+          </div>
+          <h3 class="text-2xl font-semibold text-[#111827]">Contract Talent</h3>
+          <p class="mt-3 text-[#6B7280] leading-snug">
+            Get experienced contractors ready to deliver from day one.
+Ideal for scaling projects or bridging technical gaps without long-term commitment.
+          </p>
+          
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="group h-full rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-lg">
+        <div class="flex h-full flex-col">
+          <div class="mb-6 inline-grid place-items-center size-12 rounded-xl bg-blue-50 text-[#007BFF]">
+            <span class="text-xl">🎯</span>
+          </div>
+          <h3 class="text-2xl font-semibold text-[#111827]">Talent Sourcing</h3>
+          <p class="mt-3 text-[#6B7280] leading-snug">
+            Access targeted shortlists built from deep research and outreach.
+You manage interviews — we deliver qualified candidates fast.
+          </p>
+          
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- PROCESS -->
+<section id="process" class="bg-white py-20">
+  <div class="container maxw">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-[#111827]">
+      Streamlined <span class="text-[#007BFF]">Hiring Process</span>
+    </h2>
+    <p class="mt-3 text-lg text-[#6B7280] max-w-2xl">
+      Simple, transparent, and fast from brief to offer.
+    </p>
+
+    <!-- Progress indicator -->
+    <div class="relative mt-12 hidden md:block">
+      <div class="h-1 w-full bg-gray-200 rounded-full"></div>
+      <div class="absolute inset-y-0 left-0 h-1 w-1/3 bg-[#007BFF] rounded-full transition-all"></div>
+    </div>
+
+    <!-- Steps -->
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      <!-- Step 1 -->
+      <article class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition">
+        <div class="flex items-center gap-3">
+          <span class="grid size-10 place-items-center rounded-lg bg-blue-50 text-[#007BFF] font-bold text-lg">1</span>
+          <h3 class="text-2xl font-semibold text-[#111827]">Define the Role</h3>
+        </div>
+        <p class="mt-4 text-[#6B7280] leading-snug">
+          Scorecard, stack, outcomes, and hiring bar agreed in one focused session.
+        </p>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition">
+        <div class="flex items-center gap-3">
+          <span class="grid size-10 place-items-center rounded-lg bg-blue-50 text-[#007BFF] font-bold text-lg">2</span>
+          <h3 class="text-2xl font-semibold text-[#111827]">Source & Screen</h3>
+        </div>
+        <p class="mt-4 text-[#6B7280] leading-snug">
+          Targeted outreach, technical checks, and detailed candidate notes on fit and availability.
+        </p>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm hover:shadow-lg transition">
+        <div class="flex items-center gap-3">
+          <span class="grid size-10 place-items-center rounded-lg bg-blue-50 text-[#007BFF] font-bold text-lg">3</span>
+          <h3 class="text-2xl font-semibold text-[#111827]">Interview & Hire</h3>
+        </div>
+        <p class="mt-4 text-[#6B7280] leading-snug">
+          Scheduling, feedback loops, offers, and post-hire follow-through for lasting success.
+        </p>
+      </article>
+    </div>
+<!-- CTA -->
+    <div class="mt-12">
+      <a
+        href="#contact"
+        class="inline-flex items-center rounded-full bg-[#007BFF] px-7 py-4 text-white text-lg font-semibold hover:bg-[#00E6C3] hover:text-[#111827] transition"
+      >
+        Start Now
+      </a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- CTA BAND -->
+<section class="bg-gradient-to-r from-primary to-accent text-white">
+  <div class="container maxw py-14 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+    <h3 class="text-3xl md:text-4xl font-bold leading-tight">
+      Ready to find top tech talent?
+      <span class="block text-white/80 text-lg font-normal mt-2">
+        Partner with InitSource to hire faster and smarter.
+      </span>
+    </h3>
+    <a href="#contact"
+       class="inline-flex items-center rounded-full bg-white text-primary px-8 py-4 text-lg font-semibold shadow-md hover:shadow-lg hover:opacity-95 transition-all duration-200">
+       Get Started
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section bg-white py-20">
+  <div class="container maxw max-w-3xl text-center">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-[#111827]">
+      Start Hiring with Confidence
+    </h2>
+    <p class="mt-2 text-lg text-[#6B7280]">
+      We’re based in <strong>London, UK</strong> — connecting top tech talent with leading companies nationwide.
+    </p>
+    <p class="mt-2 text-sm text-gray-500">
+  Registered with <strong>Companies House (No. 16101983)</strong> · Compliant with
+  <strong>UK GDPR & Employment Agency Regulations 2003</strong>
+</p>
+
+
+    <form
+      name="contact"
+      method="POST"
+      action="/api/contact"
+      class="mt-10 grid gap-5 text-left"
+    >
+      <label class="block">
+        <span class="sr-only">Your name</span>
+        <input
+          required
+          name="name"
+          placeholder="Your name"
+          class="w-full border border-gray-300 rounded-lg px-5 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
+        />
+      </label>
+
+      <label class="block">
+        <span class="sr-only">Work email</span>
+        <input
+          required
+          type="email"
+          name="email"
+          placeholder="Work email"
+          class="w-full border border-gray-300 rounded-lg px-5 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
+        />
+      </label>
+
+      <label class="block">
+        <span class="sr-only">Message</span>
+        <textarea
+          required
+          name="message"
+          placeholder="What roles are you hiring for?"
+          class="w-full border border-gray-300 rounded-lg px-5 py-4 h-40 text-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
+        ></textarea>
+      </label>
+
+      <button
+        type="submit"
+        class="rounded-full bg-[#007BFF] px-7 py-4 text-white text-lg font-semibold hover:bg-[#00E6C3] hover:text-[#111827] transition"
+      >
+        Send
+      </button>
+    </form>
+
+    <p class="mt-6 text-sm text-gray-500">
+      By submitting this form, you agree to our
+      <a href="/privacy" class="text-[#007BFF] hover:underline" target="_blank" rel="noopener">Privacy Policy</a>.
+    </p>
+  </div>
+</section>
+
+  
+
+  <!-- FOOTER -->
+<footer class="bg-[#111827] text-white">
+  <div class="container maxw py-14 grid md:grid-cols-4 gap-10">
+    <!-- Logo + Tagline -->
+    <div>
+      <img src="/logo-white.svg" alt="InitSource Ltd" class="h-9 mb-4" />
+      <p class="text-gray-400 text-sm leading-relaxed">
+        Driven by Tech | Powered by People<br>
+        Specialist recruitment for engineering, data, and product teams.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-lg font-semibold mb-3">Company</h4>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+        <li><a href="#services" class="hover:text-white transition">Services</a></li>
+        <li><a href="#process" class="hover:text-white transition">Process</a></li>
+        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Legal -->
+    <div>
+      <h4 class="text-lg font-semibold mb-3">Legal</h4>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="/privacy" target="_blank" rel="noopener" class="hover:text-white transition">Privacy Policy</a></li>
+        <li><a href="/terms" target="_blank" rel="noopener" class="hover:text-white transition">Terms of Business</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="text-lg font-semibold mb-3">Get in Touch</h4>
+      <ul class="text-gray-300 text-sm space-y-2">
+        <li>📍 London, United Kingdom</li>
+        <li>📞 +44 20 3833 4944</li>
+        <li>✉️ <a href="mailto:contact@initsource.co.uk" class="hover:text-white transition">contact@initsource.co.uk</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
+    © 2025 InitSource Ltd. All rights reserved.
+  </div>
+</footer>
+
