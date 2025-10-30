@@ -1,3 +1,4 @@
+export const prerender = false;
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
@@ -54,7 +55,7 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: false, error: e?.message || "Server error" }, 500);
   }
 };
-//trigger built
+
 function json(body: any, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
