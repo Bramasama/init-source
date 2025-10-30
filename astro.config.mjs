@@ -1,8 +1,12 @@
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 
 export default defineConfig({
-  site: "https://www.initsource.example", // change later
+  site: 'https://initsource.co.uk',
+  output: 'server',
+  adapter: node({
+    mode: 'standalone',
+  }),
   integrations: [sitemap()],
-  output: "static"
 });

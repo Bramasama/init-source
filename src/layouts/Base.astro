@@ -1,22 +1,98 @@
 ---
-const { title = "Init Source Ltd", description = "IT & Software Recruitment" } = Astro.props;
+const {
+  title = "Init Source Ltd | Hire Proven Software & Tech Talent Fast",
+  description = "AI-first, UK-based recruitment for software, data, and product professionals. Hire top talent in weeks, not months.",
+  image = "https://initsource.co.uk/og-image.jpg"
+} = Astro.props;
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.svg" />
-    <link rel="stylesheet" href="/src/styles/base.css" />
-    <title>{title}</title>
 
-    <!-- Open Graph -->
+<html lang="en" data-ai-seo="true">
+  <head>
+    <!-- Dynamic, AI-driven meta tags and schema -->
+    <slot name="head" />
+
+    <!-- Smart SEO Defaults (AI can override via props or slot) -->
+    <title>{title}</title>
+    <meta name="description" content={description}>
+
+    <!-- Open Graph (AI-ready for custom tags/props) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://initsource.co.uk/" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/hero-illustration.svg" />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Canonical and Mobile Friendly -->
+    <link rel="canonical" href="https://initsource.co.uk/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- AI-first Schema: EmploymentAgency, SearchAction (extendable with AI) -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "EmploymentAgency",
+        "name": "Init Source Ltd",
+        "url": "https://initsource.co.uk/",
+        "logo": image,
+        "description": description,
+        "email": "contact@initsource.co.uk",
+        "telephone": "+442038334944",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "71-75 Shelton Street, Covent Garden",
+          "postalCode": "WC2H 9JQ",
+          "addressLocality": "London",
+          "addressCountry": "GB"
+        },
+        "areaServed": ["GB"],
+        "sameAs": [
+          "https://www.linkedin.com/company/initsource"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "Sales",
+          "email": "contact@initsource.co.uk",
+          "telephone": "+442038334944",
+          "areaServed": "GB",
+          "availableLanguage": ["en"]
+        }]
+      })}
+    </script>
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Init Source Ltd",
+        "url": "https://initsource.co.uk/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Init Source Ltd",
+          "logo": {
+            "@type": "ImageObject",
+            "url": image
+          }
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://initsource.co.uk/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      })}
+    </script>
+
+    <!-- AI Analytics/Optimization Scripts -->
+    <script src="/scripts/ai-seo.js" type="module" async></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-white text-text font-sans antialiased">
+  <body>
     <slot />
   </body>
 </html>

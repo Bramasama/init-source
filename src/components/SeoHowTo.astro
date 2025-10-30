@@ -1,0 +1,8 @@
+---
+const { steps = [] } = Astro.props;
+const ld = { "@context":"https://schema.org","@type":"HowTo",
+  name:"Our Hiring Process",
+  step: steps.map((s)=>({ "@type":"HowToStep", name:s.name, text:s.text }))
+};
+---
+<script type="application/ld+json">{JSON.stringify(ld)}</script>

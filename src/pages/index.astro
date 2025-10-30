@@ -2,10 +2,79 @@
 import Base from "../layouts/Base.astro";
 import "../styles/base.css";
 import Header from "../components/Header.astro";
-const year = new Date().getFullYear();
+
+import { BRAND } from "../seo/site.config";
+import SeoFaq from "../components/SeoFaq.astro";
+import SeoHowTo from "../components/SeoHowTo.astro";
+
+const faqs = [
+  { q: "What roles do you hire for?", a: "Software, data, and product roles across the UK." },
+  { q: "How fast can we hire?", a: "Shortlist in days. Offers in weeks, not months." }
+];
+
+const steps = [
+  { name: "Discovery", text: "Clarify the role, success profile, and timelines." },
+  { name: "Sourcing", text: "Targeted outreach and screening of qualified candidates." },
+  { name: "Shortlist", text: "3–5 top candidates delivered with structured notes." },
+  { name: "Offer & Start", text: "Negotiation and onboarding coordination." }
+];
 ---
-<Base title="Init Source — Top Tech Talent" description="Specialist recruitment for engineering, data, and product.">
+
+<Base
+  title="Init Source Ltd | Hire Proven Software & Tech Talent Fast"
+  description="AI-first, UK-based recruitment for software, data, and product professionals. Hire top talent in weeks, not months."
+  image={`${BRAND.domain}/og-image.jpg`}
+  canonical={`${BRAND.domain}/`}
+>
+
+  <Fragment slot="head">
+    <!-- Keep page-unique items only -->
+    <link rel="preload" as="image" href="/hero-illustration.svg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/logo-white.svg" />
+    <meta charset="UTF-8" />
+
+    <!-- Home-only JSON-LD -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "EmploymentAgency",
+        "name": BRAND.name ?? "Init Source Ltd",
+        "url": `${BRAND.domain}/`,
+        "logo": `${BRAND.domain}/logo.svg`,
+        "image": `${BRAND.domain}/og-image.jpg`,
+        "description": "UK tech recruitment for software, data, and product roles. Fast, precise, human-first hiring.",
+        "email": BRAND.email,
+        "telephone": BRAND.tel,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "71-75 Shelton Street, Covent Garden",
+          "postalCode": "WC2H 9JQ",
+          "addressLocality": "London",
+          "addressCountry": "GB"
+        },
+        "areaServed": ["GB"],
+        "sameAs": ["https://www.linkedin.com/company/initsource"],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "Sales",
+          "email": BRAND.email,
+          "telephone": BRAND.tel,
+          "areaServed": "GB",
+          "availableLanguage": ["en"]
+        }]
+      })}
+    </script>
+
+    <!-- Programmatic schemas -->
+    <SeoFaq faqs={faqs} />
+    <SeoHowTo steps={steps} />
+  </Fragment>
+
+
   <Header />
+
+  
+
 
   <!-- HERO -->
   <section class="section bg-neutral-light">
@@ -103,7 +172,7 @@ const year = new Date().getFullYear();
       <article class="group h-full rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-lg">
         <div class="flex h-full flex-col">
           <div class="mb-6 inline-grid place-items-center size-12 rounded-xl bg-blue-50 text-[#007BFF]">
-            <span class="text-xl">💼</span>
+            <span class="text-xl">&#x1F4BC;</span>
           </div>
           <h3 class="text-2xl font-semibold text-[#111827]">Permanent Recruitment</h3>
           <p class="mt-3 text-[#6B7280] leading-snug">
@@ -118,7 +187,7 @@ We combine technical screening with human insight to reduce hiring risk.
       <article class="group h-full rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-lg">
         <div class="flex h-full flex-col">
           <div class="mb-6 inline-grid place-items-center size-12 rounded-xl bg-blue-50 text-[#007BFF]">
-            <span class="text-xl">⚙️</span>
+            <span class="text-xl">&#x2699;</span>
           </div>
           <h3 class="text-2xl font-semibold text-[#111827]">Contract Talent</h3>
           <p class="mt-3 text-[#6B7280] leading-snug">
@@ -133,7 +202,7 @@ Ideal for scaling projects or bridging technical gaps without long-term commitme
       <article class="group h-full rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition hover:shadow-lg">
         <div class="flex h-full flex-col">
           <div class="mb-6 inline-grid place-items-center size-12 rounded-xl bg-blue-50 text-[#007BFF]">
-            <span class="text-xl">🎯</span>
+            <span class="text-xl">&#x1F3AF;</span>
           </div>
           <h3 class="text-2xl font-semibold text-[#111827]">Talent Sourcing</h3>
           <p class="mt-3 text-[#6B7280] leading-snug">
@@ -229,65 +298,62 @@ You manage interviews — we deliver qualified candidates fast.
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section bg-white py-20">
-  <div class="container maxw max-w-3xl text-center">
-    <h2 class="text-4xl md:text-5xl font-extrabold text-[#111827]">
-      Start Hiring with Confidence
-    </h2>
-    <p class="mt-2 text-lg text-[#6B7280]">
-      We’re based in <strong>London, UK</strong> — connecting top tech talent with leading companies nationwide.
-    </p>
-    <p class="mt-2 text-sm text-gray-500">
-  Registered with <strong>Companies House (No. 16101983)</strong> · Compliant with
-  <strong>UK GDPR & Employment Agency Regulations 2003</strong>
-</p>
+ <!-- CONTACT FORM SECTION -->
+  <section id="contact" class="section bg-white">
+    <div class="container max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-extrabold text-[#111827]">Start Hiring with Confidence</h2>
+      <form id="contactForm" class="mt-10 grid gap-5 text-left">
+        <input type="hidden" name="_subject" value="New lead from Init Source" />
+        <input type="hidden" name="_redirect" value="https://initsource.co.uk/thanks" />
+        <label class="block">
+          <span class="sr-only">Your name</span>
+          <input required name="name" placeholder="Your name"
+                 class="w-full border border-gray-300 rounded-lg px-5 py-4 text-lg" autocomplete="name" />
+        </label>
+        <label class="block">
+          <span class="sr-only">Work email</span>
+          <input required type="email" name="email" placeholder="Work email"
+                 class="w-full border border-gray-300 rounded-lg px-5 py-4 text-lg"
+                 autocomplete="email" inputmode="email" />
+        </label>
+        <label class="block">
+          <span class="sr-only">Message</span>
+          <textarea required name="message" aria-label="Message" placeholder="What roles are you hiring for?"
+                    class="w-full border border-gray-300 rounded-lg px-5 py-4 h-40 text-lg"></textarea>
+        </label>
+        <button type="submit"
+                class="rounded-full bg-primary px-7 py-4 text-white text-lg font-semibold">
+          Send
+        </button>
+      </form>
+      <p class="mt-6 text-sm text-gray-500">
+        By submitting this form, you agree to our
+        <a href="/privacy" class="text-primary hover:underline" target="_blank" rel="noopener">Privacy Policy</a>.
+      </p>
+    </div>
+    <script>
+      const f = document.getElementById('contactForm');
+      f.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(f).entries());
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const out = await res.json().catch(() => ({}));
+        if (res.ok && out.ok) {
+          window.location.href = out.redirect || data._redirect || '/thanks';
+        } else {
+          alert('Submission failed: ' + (out.error || res.status));
+        }
+      });
+    </script>
+  </section>
 
 
-    <form
-      name="contact"
-      method="POST"
-      action="/api/contact"
-      class="mt-10 grid gap-5 text-left"
-    >
-      <label class="block">
-        <span class="sr-only">Your name</span>
-        <input
-          required
-          name="name"
-          placeholder="Your name"
-          class="w-full border border-gray-300 rounded-lg px-5 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
-        />
-      </label>
 
-      <label class="block">
-        <span class="sr-only">Work email</span>
-        <input
-          required
-          type="email"
-          name="email"
-          placeholder="Work email"
-          class="w-full border border-gray-300 rounded-lg px-5 py-4 text-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
-        />
-      </label>
 
-      <label class="block">
-        <span class="sr-only">Message</span>
-        <textarea
-          required
-          name="message"
-          placeholder="What roles are you hiring for?"
-          class="w-full border border-gray-300 rounded-lg px-5 py-4 h-40 text-lg focus:outline-none focus:ring-2 focus:ring-[#007BFF]"
-        ></textarea>
-      </label>
-
-      <button
-        type="submit"
-        class="rounded-full bg-[#007BFF] px-7 py-4 text-white text-lg font-semibold hover:bg-[#00E6C3] hover:text-[#111827] transition"
-      >
-        Send
-      </button>
-    </form>
 
     <p class="mt-6 text-sm text-gray-500">
       By submitting this form, you agree to our
@@ -345,4 +411,4 @@ You manage interviews — we deliver qualified candidates fast.
     © 2025 InitSource Ltd. All rights reserved.
   </div>
 </footer>
-
+</Base>
