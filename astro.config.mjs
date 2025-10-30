@@ -1,12 +1,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
   site: 'https://initsource.co.uk',
   output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
   integrations: [sitemap()],
 });
