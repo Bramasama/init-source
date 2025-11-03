@@ -88,6 +88,21 @@ const {
 
     <!-- AI Analytics/Optimization Scripts -->
     <script src="/scripts/ai-seo.js" type="module" async></script>
+    <script is:inline>
+      (() => {
+        const storageKey = "theme";
+        try {
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)")?.matches;
+          const storedTheme = window.localStorage?.getItem(storageKey);
+          const theme = storedTheme ?? (prefersDark ? "dark" : "light");
+          const root = document.documentElement;
+          root.classList.toggle("dark", theme === "dark");
+          root.dataset.theme = theme;
+        } catch (error) {
+          // Ignore errors if localStorage is unavailable (e.g. during SSR).
+        }
+      })();
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
@@ -98,7 +113,7 @@ const {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body>
+  <body class="bg-white text-slate-900 transition-colors duration-300 ease-in-out dark:bg-slate-950 dark:text-slate-100">
     <slot />
   </body>
 </html>

@@ -34,3 +34,26 @@
 .animate-fade-in-left {
   animation: fade-in-left 0.8s ease-out forwards;
 }
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111827;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+html.dark .lead {
+  color: #cbd5f5;
+}

@@ -1,15 +1,143 @@
-<header class="sticky top-0 z-40 bg-white/70 backdrop-blur border-b border-neutral">
-  <div class="container maxw h-20 flex items-center justify-between">
+<header class="sticky top-0 z-40 border-b border-neutral bg-white/70 backdrop-blur transition-colors dark:border-slate-800 dark:bg-slate-950/85">
+  <div class="container maxw flex h-20 items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <img src="/logo.svg" alt="Init Source Ltd" class="h-14 opacity-0 animate-fade-in-left" />
+      <img src="/logo.svg" alt="Init Source Ltd" class="h-14 opacity-0 animate-fade-in-left dark:hidden" />
+      <img src="/logo-white.svg" alt="Init Source Ltd" class="hidden h-14 opacity-0 animate-fade-in-left dark:block" />
       <span class="sr-only">Init Source Ltd</span>
     </a>
-    <nav class="hidden md:flex items-center gap-10 text-lg">
-      <a href="#about" class="hover:text-blue-600 hover:font-semibold transition-colors">About</a>
-      <a href="#services"class="hover:text-blue-600 hover:font-semibold transition-colors">Services</a>
-      <a href="#process" class="hover:text-blue-600 hover:font-semibold transition-colors">Process</a>
-      <a href="#contact" class="hover:text-blue-600 hover:font-semibold transition-colors">Contact</a>
-      <a href="#contact" class="inline-flex items-center rounded-full bg-primary px-5 py-3 text-white font-semibold hover:bg-accent">Get Started</a>
-    </nav>
+    <div class="flex items-center gap-4">
+      <button
+        type="button"
+        data-theme-toggle
+        class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white/80 p-2 text-slate-600 shadow-sm transition hover:border-slate-300 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:border-slate-500 dark:hover:text-slate-100"
+        aria-label="Switch to dark mode"
+        aria-pressed="false"
+      >
+        <svg data-sun xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-5 w-5">
+          <path
+            d="M12 4V2M12 22v-2M6.34 6.34 4.93 4.93M19.07 19.07l-1.41-1.41M4 12H2m20 0h-2M6.34 17.66 4.93 19.07M19.07 4.93l-1.41 1.41M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <svg data-moon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="hidden h-5 w-5">
+          <path
+            d="M21 12.79A9 9 0 0 1 11.21 3c0-.34 0-.67.05-1A9 9 0 1 0 21 12.79Z"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <nav class="hidden items-center gap-10 text-lg text-slate-700 transition-colors md:flex dark:text-slate-200">
+        <a href="#about" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">About</a>
+        <a href="#services" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Services</a>
+        <a href="#process" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Process</a>
+        <a href="#contact" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Contact</a>
+        <a
+          href="#contact"
+          class="inline-flex items-center rounded-full bg-primary px-5 py-3 font-semibold text-white transition hover:bg-accent hover:text-slate-900 dark:hover:text-slate-900"
+        >
+          Get Started
+        </a>
+      </nav>
+    </div>
   </div>
+  <script is:inline>
+    const storageKey = "theme";
+    const toggle = document.querySelector("[data-theme-toggle]");
+    const sun = toggle?.querySelector("[data-sun]");
+    const moon = toggle?.querySelector("[data-moon]");
+    const root = document.documentElement;
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const applyTheme = (theme, { persist } = { persist: true }) => {
+      const isDark = theme === "dark";
+      root.classList.toggle("dark", isDark);
+      root.dataset.theme = theme;
+      if (sun && moon) {
+        sun.classList.toggle("hidden", isDark);
+        moon.classList.toggle("hidden", !isDark);
+      }
+      if (toggle) {
+        toggle.setAttribute("aria-pressed", String(isDark));
+        toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      }
+      if (persist) {
+        try {
+          window.localStorage?.setItem(storageKey, theme);
+        } catch (error) {
+          // Ignore storage errors (e.g. private mode)
+        }
+      }
+    };
+
+    const getStoredTheme = () => {
+      try {
+        const stored = window.localStorage?.getItem(storageKey);
+        return stored === "light" || stored === "dark" ? stored : null;
+      } catch (error) {
+        // Ignore storage errors and fall back to media query
+      }
+      return null;
+    };
+
+    const getPreferredTheme = () => (mediaQuery.matches ? "dark" : "light");
+
+    const getInitialTheme = () => {
+      const stored = getStoredTheme();
+      return {
+        theme: stored ?? getPreferredTheme(),
+        persist: Boolean(stored)
+      };
+    };
+
+    const syncToggleState = () => {
+      const current = root.classList.contains("dark") ? "dark" : "light";
+      if (sun && moon) {
+        sun.classList.toggle("hidden", current === "dark");
+        moon.classList.toggle("hidden", current !== "dark");
+      }
+      if (toggle) {
+        toggle.setAttribute("aria-pressed", String(current === "dark"));
+        toggle.setAttribute("aria-label", current === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      }
+    };
+
+    const init = () => {
+      const initial = getInitialTheme();
+      applyTheme(initial.theme, { persist: initial.persist });
+      syncToggleState();
+      toggle?.addEventListener("click", () => {
+        const isDark = root.classList.contains("dark");
+        applyTheme(isDark ? "light" : "dark");
+        syncToggleState();
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init, { once: true });
+    } else {
+      init();
+    }
+
+    const handleMediaChange = (event) => {
+      try {
+        if (getStoredTheme()) return;
+        applyTheme(event.matches ? "dark" : "light", { persist: false });
+        syncToggleState();
+      } catch (error) {
+        // Ignore storage errors
+      }
+    };
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleMediaChange);
+    } else if (typeof mediaQuery.addListener === "function") {
+      mediaQuery.addListener(handleMediaChange);
+    }
+  </script>
 </header>

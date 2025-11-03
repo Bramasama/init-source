@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: "class",
   content: ["./src/**/*.{astro,html,js,ts,tsx,md,mdx}"],
   theme: {
     container: { center: true, padding: "1.25rem" },
