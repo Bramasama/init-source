@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({ request }) => {
   let name = "", email = "", message = "", subject = "New lead from Init Source", next = "";
 
   try {
-    if (!RESEND_API_KEY || RESEND_API_KEY === "re_GbLzBR4P_MP8r2ncfU68m8BM4QKFV8QLS") {
+    if (!RESEND_API_KEY || RESEND_API_KEY === "your_resend_api_key_here") {
       console.error("[contact] Missing RESEND_API_KEY. Form submission cannot be delivered.");
       return json({ ok: false, error: "Email service not configured. Please try again later." }, 503);
     }
