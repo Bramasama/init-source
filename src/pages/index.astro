@@ -305,57 +305,142 @@ You manage interviews - we deliver qualified candidates fast.
 
  <!-- CONTACT FORM SECTION -->
   <section id="contact" class="section bg-white transition-colors dark:bg-slate-950">
-    <div class="container max-w-3xl mx-auto text-center">
-      <h2 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100">Start Hiring with Confidence</h2>
-      <form id="contactForm" class="mt-10 grid gap-5 text-left">
-        <input type="hidden" name="_subject" value="New lead from Init Source" />
-        <input type="hidden" name="_redirect" value="https://initsource.co.uk/thanks" />
-        <label class="block">
-          <span class="sr-only">Your name</span>
-          <input required name="name" placeholder="Your name"
-                 class="w-full rounded-lg border border-gray-300 px-5 py-4 text-lg transition-colors dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
-                 autocomplete="name" />
-        </label>
-        <label class="block">
-          <span class="sr-only">Work email</span>
-          <input required type="email" name="email" placeholder="Work email"
-                 class="w-full rounded-lg border border-gray-300 px-5 py-4 text-lg transition-colors dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
-                 autocomplete="email" inputmode="email" />
-        </label>
-        <label class="block">
-          <span class="sr-only">Message</span>
-          <textarea required name="message" aria-label="Message" placeholder="What roles are you hiring for?"
-                    class="w-full h-40 rounded-lg border border-gray-300 px-5 py-4 text-lg transition-colors dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400"></textarea>
-        </label>
-        <button type="submit"
-                class="rounded-full bg-primary px-7 py-4 text-lg font-semibold text-white transition-colors hover:bg-accent hover:text-slate-900 dark:hover:text-slate-900">
-          Send
-        </button>
-      </form>
-      <p class="mt-6 text-sm text-gray-500 dark:text-slate-400">
-        By submitting this form, you agree to our
-        <a href="/privacy" class="text-primary hover:underline dark:text-accent" target="_blank" rel="noopener">Privacy Policy</a>.
-      </p>
-    </div>
-    <script>
-      const f = document.getElementById('contactForm');
-      f.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = Object.fromEntries(new FormData(f).entries());
-        const res = await fetch('/api/contact', {
+  <div class="container max-w-3xl mx-auto text-center">
+    <h2 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100">Start Hiring with Confidence</h2>
+    
+    <form id="contact-form-final" class="mt-10 grid gap-5 text-left">
+      
+      <p id="form-status" aria-live="polite" class="text-center font-medium min-h-[1.5rem]"></p>
+      
+      <input type="hidden" name="_subject" value="New lead from Init Source" />
+      <input type="hidden" name="_redirect" value="/thanks" />
+      
+      <div style="position: absolute; left: -5000px; opacity: 0;">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
+      
+      <label class="block">
+        <span class="sr-only">Your name</span>
+        <input 
+          required 
+          name="name" 
+          placeholder="Your name"
+          class="w-full rounded-lg border border-gray-300 px-5 py-4 text-lg transition-colors dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
+          autocomplete="name" 
+          id="name-input"
+        />
+      </label>
+      
+      <label class="block">
+        <span class="sr-only">Work email</span>
+        <input 
+          required 
+          type="email" 
+          name="email" 
+          placeholder="Work email"
+          class="w-full rounded-lg border border-gray-300 px-5 py-4 text-lg transition-colors dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
+          autocomplete="email" 
+          inputmode="email" 
+          id="email-input"
+        />
+      </label>
+      
+      <label class="block">
+        <span class="sr-only">Message</span>
+        <textarea 
+          required 
+          name="message" 
+          aria-label="Message" 
+          placeholder="What roles are you hiring for?"
+          class="w-full h-40 rounded-lg border border-gray-300 px-5 py-4 text-lg transition-colors dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-400"
+          id="message-input"
+        ></textarea>
+      </label>
+      
+      <button 
+        type="submit" 
+        id="submit-button-final"
+        class="rounded-full bg-primary px-7 py-4 text-lg font-semibold text-white transition-colors hover:bg-accent hover:text-slate-900 dark:hover:text-slate-900 disabled:opacity-50"
+      >
+        Send
+      </button>
+    </form>
+    
+    <p class="mt-6 text-sm text-gray-500 dark:text-slate-400">
+      By submitting this form, you agree to our
+      <a href="/privacy" class="text-primary hover:underline dark:text-accent" target="_blank" rel="noopener">Privacy Policy</a>.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Runs client-side only after the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form-final');
+    const statusMessage = document.getElementById('form-status');
+    const submitButton = document.getElementById('submit-button-final');
+
+    if (!form || !statusMessage || !submitButton) return;
+    
+    // Set brand colors (based on your identity: Blue: #007BFF, Aqua: #00E6C3)
+    const PRIMARY_COLOR = '#007BFF';
+    const ACCENT_COLOR = '#00E6C3';
+    const ERROR_COLOR = 'red';
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // 1. Set Loading State
+      statusMessage.style.color = PRIMARY_COLOR;
+      statusMessage.textContent = 'Sending message...';
+      submitButton.disabled = true;
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          headers: {
+            'Content-Type': 'application/json', // Matches API route expectation
+          },
+          body: JSON.stringify(payload),
         });
-        const out = await res.json().catch(() => ({}));
-        if (res.ok && out.ok) {
-          window.location.href = out.redirect || data._redirect || '/thanks';
+
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok && result.ok) {
+          // 2. Success Feedback
+          statusMessage.style.color = ACCENT_COLOR;
+          statusMessage.textContent = '✅ Success! Message sent. Redirecting...';
+          form.reset(); 
+          
+          // Redirect after a short delay for visibility
+          const redirectUrl = result.redirect || formData.get('_redirect') || '/thanks';
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 1500); 
+
         } else {
-          alert('Submission failed: ' + (out.error || res.status));
+          // 3. Error Feedback
+          const message = result.error || response.statusText || 'Something went wrong on the server.';
+          statusMessage.style.color = ERROR_COLOR;
+          statusMessage.textContent = `❌ Submission failed: ${message}`;
         }
-      });
-    </script>
-  </section>
+      } catch (error) {
+        // 4. Network/System Error
+        statusMessage.style.color = ERROR_COLOR;
+        statusMessage.textContent = '❌ Network Error: Could not connect to the service.';
+        console.error('Fetch Error:', error);
+      } finally {
+        // Always re-enable button (unless redirecting)
+        if (!statusMessage.textContent.includes('Redirecting')) {
+            submitButton.disabled = false;
+        }
+      }
+    });
+  });
+</script>
    
   <!-- FOOTER -->
 <footer class="bg-[#111827] text-white transition-colors dark:bg-slate-950">
