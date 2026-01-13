@@ -1,4 +1,19 @@
+---
+import { BRAND } from "../seo/site.config";
+---
+
 <header class="sticky top-0 z-40 border-b border-neutral bg-white/70 backdrop-blur transition-colors dark:border-slate-800 dark:bg-slate-950/85">
+  <div class="border-b border-slate-100 bg-white/80 text-xs text-slate-600 transition-colors dark:border-slate-800 dark:bg-slate-950/80 dark:text-slate-300">
+    <div class="container maxw flex flex-wrap items-center justify-between gap-2 py-2">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="font-semibold">Company No: {BRAND.companyNumber}</span>
+        <span class="hidden sm:inline">Registered office: {BRAND.address}</span>
+      </div>
+      <a href={`tel:${BRAND.tel}`} class="font-semibold hover:text-blue-600 transition-colors dark:hover:text-accent">
+        {BRAND.tel}
+      </a>
+    </div>
+  </div>
   <div class="container maxw flex h-20 items-center justify-between">
     <a href="/" class="flex items-center gap-3">
       <img src="/logo.svg" alt="Init Source Ltd" class="h-14 opacity-0 animate-fade-in-left dark:hidden" />
@@ -33,16 +48,10 @@
         </svg>
       </button>
       <nav class="hidden items-center gap-10 text-lg text-slate-700 transition-colors md:flex dark:text-slate-200">
-        <a href="#about" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">About</a>
-        <a href="#services" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Services</a>
-        <a href="#process" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Process</a>
-        <a href="#contact" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Contact</a>
-        <a
-          href="#contact"
-          class="inline-flex items-center rounded-full bg-primary px-5 py-3 font-semibold text-white transition hover:bg-accent hover:text-slate-900 dark:hover:text-slate-900"
-        >
-          Get Started
-        </a>
+        <a href="/platform-recruitment-uk" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Hire</a>
+        <a href="/#process" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Process</a>
+        <a href="/candidates" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">Candidates</a>
+        <a href="/#about" class="hover:text-blue-600 hover:font-semibold transition-colors dark:hover:text-accent">About</a>
       </nav>
     </div>
   </div>

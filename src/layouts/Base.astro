@@ -1,10 +1,12 @@
 ---
 import "../styles/base.css";
 const {
-  title = "Init Source Ltd | Hire Proven Software & Tech Talent Fast",
-  description = "AI-first, UK-based recruitment for software, data, and product professionals. Hire top talent in weeks, not months.",
-  image = "https://initsource.co.uk/og-image.jpg"
+  title = "Init Source Ltd | Platform / SRE / DevOps Recruitment UK",
+  description = "Cloud Platform & Reliability recruitment for UK permanent roles. 2-5 screened candidates per role.",
+  image = "https://initsource.co.uk/og-image.jpg",
+  canonical
 } = Astro.props;
+const canonicalUrl = canonical || Astro.url?.href || "https://initsource.co.uk/";
 ---
 
 <html lang="en" data-ai-seo="true">
@@ -18,7 +20,7 @@ const {
 
     <!-- Open Graph (AI-ready for custom tags/props) -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://initsource.co.uk/" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
@@ -30,7 +32,7 @@ const {
     <meta name="twitter:image" content={image} />
 
     <!-- Canonical and Mobile Friendly -->
-    <link rel="canonical" href="https://initsource.co.uk/" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- AI-first Schema: EmploymentAgency, SearchAction (extendable with AI) -->

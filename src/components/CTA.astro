@@ -1,0 +1,19 @@
+---
+const {
+  href = "#book",
+  label = "Book a 15-min calibration call",
+  variant = "primary",
+  className = ""
+} = Astro.props;
+
+const base =
+  "inline-flex items-center rounded-full px-7 py-4 text-lg font-semibold transition-colors";
+const styles = {
+  primary: "bg-primary text-white hover:bg-accent hover:text-slate-900",
+  secondary:
+    "border border-neutral bg-white text-slate-800 hover:bg-neutral-light dark:border-slate-700 dark:bg-slate-950/70 dark:text-slate-200 dark:hover:bg-slate-900"
+};
+const classes = `${base} ${styles[variant] || styles.primary} ${className}`.trim();
+---
+
+<a href={href} class={classes} data-cta={label} data-variant={variant}>{label}</a>

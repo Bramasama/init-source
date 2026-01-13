@@ -1,0 +1,39 @@
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_3LB-Gecs.mjs';
+import 'kleur/colors';
+import { $ as $$Base } from '../chunks/Base_ClHtzgpZ.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$Privacy = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${renderComponent($$result, "Base", $$Base, { "title": "Privacy Policy \u2014 Init Source Ltd" }, { "default": ($$result2) => renderTemplate` <title>Privacy Policy | Init Source Ltd</title> <meta name="description" content="How Init Source Ltd collects, stores, and protects your data under UK GDPR and the Data Protection Act 2018."> <meta property="og:title" content="Privacy Policy | Init Source Ltd"> <meta property="og:description" content="Our privacy and data handling commitments for clients and candidates."> <meta property="og:type" content="website"> <meta property="og:url" content="https://initsource.co.uk/privacy"> <meta property="og:image" content="https://initsource.co.uk/og-image.jpg"> <link rel="canonical" href="https://initsource.co.uk/privacy"> ${maybeRenderHead()}<section id="privacy-policy" class="section bg-white"> <div class="container maxw py-16 md:py-20 prose prose-neutral"> <h1 class="text-4xl font-bold text-text">Privacy Policy & Recruitment Compliance Notice</h1> <p class="text-sm text-gray-500">Last updated: October 2025</p> <h2>Who we are</h2> <p> <strong>Init Source Ltd</strong> is a UK recruitment company acting as an
+        Employment Agency (permanent) and an Employment Business (contract).
+</p> <ul> <li>Email: <a href="mailto:contact@initsource.co.uk">contact@initsource.co.uk</a></li> <li>Company No: 16785993</li> <li>Registered office:  71-75, Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</li> </ul> <h2>Data we collect</h2> <ul> <li>Contact details (name, email, phone)</li> <li>CV, work history, qualifications</li> <li>Right-to-work and compliance documents</li> <li>References and interview feedback</li> </ul> <h2>How we use your data</h2> <ul> <li>Assess suitability and match you to roles</li> <li>Represent you to verified employers</li> <li>Communicate about vacancies, interviews, and feedback</li> <li>Meet legal and regulatory obligations</li> </ul> <p>
+We do not sell personal data. We share data only with legitimate employers
+        for genuine opportunities.
+</p> <h2>Lawful basis</h2> <p> <strong>Legitimate interests</strong> (Article 6(1)(f) UK GDPR). Where consent
+        is required (e.g., marketing), we will request it and you may withdraw it
+        at any time.
+</p> <h2>Storage, security, retention</h2> <ul> <li>Encrypted UK-based systems, access limited to authorised staff</li> <li>Retention up to <strong>12 months of inactivity</strong>, then secure deletion unless law requires longer</li> </ul> <h2>Your rights</h2> <p>
+You can request access, rectification, deletion, restriction, or object to processing.
+        Contact <a href="mailto:contact@initsource.co.uk">contact@initsource.co.uk</a>.
+</p> <h2>International transfers</h2> <p>
+No routine transfers outside the UK. If needed, we use appropriate safeguards
+        such as IDTA or SCCs.
+</p> <h2>Automated decision-making</h2> <p>We do not use solely automated decisions with legal or similarly significant effects.</p> <h2>Complaints</h2> <p>
+You can complain to the UK Information Commissioner’s Office (ICO):
+<a href="https://ico.org.uk" target="_blank" rel="noopener" class="text-primary hover:underline">ico.org.uk</a>.
+</p> </div> </section> ` })}`;
+}, "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/pages/privacy.astro", void 0);
+
+const $$file = "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/pages/privacy.astro";
+const $$url = "/privacy";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Privacy,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

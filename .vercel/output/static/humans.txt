@@ -1,0 +1,8 @@
+/* TEAM */
+Developer: Init Source Team
+Website: https://initsource.co.uk
+Contact: contact@initsource.co.uk
+
+/* SITE */
+Last updated: October 2025
+Technology: Astro, TailwindCSS, Vercel

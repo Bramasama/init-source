@@ -3,6 +3,8 @@ export const BRAND = {
   domain: "https://initsource.co.uk",
   tel: "+442038334944",
   email: "contact@initsource.co.uk",
+  companyNumber: "16785993",
+  address: "71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom",
   colors: {
     primary: "#007BFF",
     accent: "#00E6C3",
@@ -12,7 +14,7 @@ export const BRAND = {
 };
 
 export const SERVICES = [
-  { name: "Software Engineering Recruitment" },
-  { name: "Data & Analytics Recruitment" },
-  { name: "Product Management Recruitment" },
+  { name: "Platform / SRE / DevOps Recruitment (UK)" },
+  { name: "Cloud Infrastructure Recruitment" },
+  { name: "Reliability Engineering Recruitment" },
 ];
