@@ -2,7 +2,7 @@ import { f as createComponent, k as renderComponent, r as renderTemplate, l as F
 import 'kleur/colors';
 import { $ as $$Base } from '../chunks/Base_ClHtzgpZ.mjs';
 import { B as BRAND, $ as $$Header, a as $$Footer } from '../chunks/Footer_D3hOfjAy.mjs';
-import { $ as $$Seofaq, a as $$CTA, b as $$ScreeningChecklist } from '../chunks/Seofaq_DiyQU49q.mjs';
+import { $ as $$SeoFaq, a as $$CTA, b as $$ScreeningChecklist } from '../chunks/SeoFaq_DYMRUHVB.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$PlatformRecruitmentUk = createComponent(async ($$result, $$props, $$slots) => {
@@ -70,7 +70,7 @@ Book a 15-min calibration call
 </button> </form> <p id="platformContactStatus" class="mt-3 text-sm text-gray-500 dark:text-slate-400" aria-live="polite"></p> <p class="mt-6 text-sm text-gray-500 dark:text-slate-400">
 By submitting this form, you agree to our
 <a href="/privacy" class="text-primary hover:underline dark:text-accent" target="_blank" rel="noopener">Privacy Policy</a>.
-</p> </div> ${renderScript($$result2, "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/pages/platform-recruitment-uk.astro?astro&type=script&index=0&lang.ts")} </section> ${renderComponent($$result2, "Footer", $$Footer, {})} `, "head": async ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": async ($$result3) => renderTemplate` <meta charset="UTF-8"> ${renderComponent($$result3, "Seofaq", $$Seofaq, { "faqs": seoFaqs })} ` })}` })}`;
+</p> </div> ${renderScript($$result2, "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/pages/platform-recruitment-uk.astro?astro&type=script&index=0&lang.ts")} </section> ${renderComponent($$result2, "Footer", $$Footer, {})} `, "head": async ($$result2) => renderTemplate`${renderComponent($$result2, "Fragment", Fragment, { "slot": "head" }, { "default": async ($$result3) => renderTemplate` <meta charset="UTF-8"> ${renderComponent($$result3, "Seofaq", $$SeoFaq, { "faqs": seoFaqs })} ` })}` })}`;
 }, "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/pages/platform-recruitment-uk.astro", void 0);
 
 const $$file = "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/pages/platform-recruitment-uk.astro";

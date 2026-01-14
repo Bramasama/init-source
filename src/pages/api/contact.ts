@@ -40,10 +40,15 @@ export const POST: APIRoute = async ({ request }) => {
     const resend = new Resend(RESEND_API_KEY);
 
     if (ct.includes("application/json")) {
-      const body = await request.json();
-      data = normalize(body);
-      subject = String(body._subject || subject);
-      next = String(body._redirect || "");
+      let body: any = {};
+      try {
+        body = await request.json();
+      } catch (error) {
+        return json({ ok: false, error: "Invalid JSON payload" }, 400);
+      }
+      data = normalize(body || {});
+      subject = String(body?._subject || subject);
+      next = String(body?._redirect || "");
     } else if (ct.includes("application/x-www-form-urlencoded") || ct.includes("multipart/form-data")) {
       const form = await request.formData();
       if ((form.get("_gotcha") as string)?.trim()) {
@@ -54,6 +59,10 @@ export const POST: APIRoute = async ({ request }) => {
       next = String(form.get("_redirect") || "");
     } else {
       return json({ ok: false, error: "Unsupported content type" }, 415);
+    }
+
+    if (!Object.keys(data).length) {
+      return json({ ok: false, error: "Empty payload" }, 400);
     }
 
     if (String(data._gotcha || "").trim()) {
@@ -89,27 +98,31 @@ export const POST: APIRoute = async ({ request }) => {
       .map(([label, value]) => `<li><b>${esc(label)}:</b> ${esc(value)}</li>`)
       .join("");
 
-    await resend.emails.send({
-      from: FROM,
-      to: TO,
-      reply_to: email,
-      subject: `${subject}${type ? ` (${type})` : ""}`,
-      text: [
-        `Type: ${type}`,
-        `Name: ${name}`,
-        `Email: ${email}`,
-        detailsText ? `\n${detailsText}` : "",
-        message ? `\nMessage:\n${message}` : ""
-      ]
-        .filter(Boolean)
-        .join("\n"),
-      html: `
-        <p><b>Type:</b> ${esc(type)}</p>
-        <p><b>Name:</b> ${esc(name)}<br/><b>Email:</b> ${esc(email)}</p>
-        ${detailsHtml ? `<ul>${detailsHtml}</ul>` : ""}
-        ${message ? `<pre style="font:inherit;white-space:pre-wrap">${esc(message)}</pre>` : ""}
-      `
-    });
+    try {
+      await resend.emails.send({
+        from: FROM,
+        to: TO,
+        reply_to: email,
+        subject: `${subject}${type ? ` (${type})` : ""}`,
+        text: [
+          `Type: ${type}`,
+          `Name: ${name}`,
+          `Email: ${email}`,
+          detailsText ? `\n${detailsText}` : "",
+          message ? `\nMessage:\n${message}` : ""
+        ]
+          .filter(Boolean)
+          .join("\n"),
+        html: `
+          <p><b>Type:</b> ${esc(type)}</p>
+          <p><b>Name:</b> ${esc(name)}<br/><b>Email:</b> ${esc(email)}</p>
+          ${detailsHtml ? `<ul>${detailsHtml}</ul>` : ""}
+          ${message ? `<pre style="font:inherit;white-space:pre-wrap">${esc(message)}</pre>` : ""}
+        `
+      });
+    } catch (error: any) {
+      return json({ ok: false, error: "Email delivery failed" }, 502);
+    }
 
     return json({ ok: true, redirect: next || "/thanks" });
   } catch (e: any) {

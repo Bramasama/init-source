@@ -43,9 +43,9 @@ var __defProp = Object.defineProperty;
 var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
 var _a;
 const $$Astro = createAstro("https://initsource.co.uk");
-const $$Seofaq = createComponent(($$result, $$props, $$slots) => {
+const $$SeoFaq = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
-  Astro2.self = $$Seofaq;
+  Astro2.self = $$SeoFaq;
   const { faqs = [] } = Astro2.props;
   ({
     mainEntity: faqs.map((f) => ({
@@ -55,6 +55,6 @@ const $$Seofaq = createComponent(($$result, $$props, $$slots) => {
     }))
   });
   return renderTemplate(_a || (_a = __template(['<script type="application/ld+json">{JSON.stringify(ld)}<\/script>'])));
-}, "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/components/Seofaq.astro", void 0);
+}, "C:/Users/hp/OneDrive/Desktop/initSourceWebSite/init-source/src/components/SeoFaq.astro", void 0);
 
-export { $$Seofaq as $, $$CTA as a, $$ScreeningChecklist as b };
+export { $$SeoFaq as $, $$CTA as a, $$ScreeningChecklist as b };
